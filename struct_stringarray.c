@@ -5,19 +5,19 @@
     List of Chars
 */
 
-void array_copy(text_arr* a, text_arr* b, int size){
+void array_copy(unsigned char* a, unsigned char* b, int size){  //COPY FROM A TO B
     
     for(int i = 0; i < size; i++){
-        b->arr[i] = a->arr[i];
+        b[i] = a[i];
     }
 }
 
-void arr_print(text_arr* tab, int size){
+void arr_print(text_arr* tab){
     printf("[");
-    for(int i = 0; i < size - 1; i++){
+    for(int i = 0; i < tab->arrsize - 1; i++){
         printf("%c, ", tab->arr[i]);
     }
-    printf("%c] \n", tab[size - 1]);
+    printf("%c] \n", tab->arr[tab->arrsize - 1]);
 }
 
 text_arr* text_array_init(){
@@ -77,24 +77,31 @@ void text_array_delete(text_arr* a){
     free(a);
 }
 
+void text_array_duplicate(text_arr* a, text_arr* b){
+    if(b == NULL) printf("Couldn't allocate Memory for a new line :(");
+
+    b->arr = (unsigned char*)malloc((a->capacity) * sizeof(unsigned char));
+    b->arrsize = a->arrsize;
+    b->capacity = a->capacity;
+    array_copy(a->arr, b->arr, a->arrsize);
+}
+
 
 /*
     List of Strings
 */
 
 
-void matrix_copy(string_arr* a, string_arr* b, int nbLines){
-    for(int y = 0; y < nbLines; y++){
-        for(int x = 0; x < a->arr[y].arrsize; x++){
-            b->arr[y]->arr[x] = a->arr[y]->arr[x];
-        }
+void matrix_copy(text_arr* a, text_arr* b, int nbLines){
+    for(int i = 0; i < nbLines; i++){
+        b[i] = a[i];
     }
 }
 
 void matrix_print(string_arr* tab){
     printf("[");
     for(int i = 0; i < tab->arrsize ; i++){
-        arr_print(tab->arr , tab->arr->arrsize);
+        arr_print(&(tab->arr[i]));
     }
     printf("]\n");
 }
@@ -140,7 +147,7 @@ text_arr string_array_pop(string_arr* a){
     return (a->arr[a->arrsize]);
 }
 
-text_arr* string_array_get(string_arr* a, int index){
+text_arr string_array_get(string_arr* a, int index){
     assert(index >= 0 && index < a->arrsize);
     return a->arr[index];
 }
@@ -152,7 +159,8 @@ void string_array_set(string_arr* a, int index, text_arr e){
 
 void string_array_delete(string_arr* a){
     for(int i = 0; i < a->arrsize; i++){
-        text_array_delete(a->arr[i]);
+        printf("ok1 : %d\n", i);
+        text_array_delete(&(a->arr[i]));
     }
     free(a);
 }
