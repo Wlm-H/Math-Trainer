@@ -14,9 +14,9 @@ Searches for 'Objects', then reads the associated stream (if any)
 
 
 
-pdf_object* pdo_initPdfObject(char* objectString){
-
+pdf_object* pdo_initPdfObject(text_arr* objectString){
     pdf_object* obj = (pdf_object*)malloc(sizeof(pdf_object));
+    
 
 
 }
