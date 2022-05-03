@@ -5,17 +5,17 @@
     List of Chars
 */
 
-void array_copy(unsigned char* a, unsigned char* b, int size){
+void array_copy(text_arr* a, text_arr* b, int size){
     
     for(int i = 0; i < size; i++){
-        b[i] = a[i];
+        b->arr[i] = a->arr[i];
     }
 }
 
-void arr_print(unsigned char tab[], int size){
+void arr_print(text_arr* tab, int size){
     printf("[");
     for(int i = 0; i < size - 1; i++){
-        printf("%c, ", tab[i]);
+        printf("%c, ", tab->arr[i]);
     }
     printf("%c] \n", tab[size - 1]);
 }
@@ -85,8 +85,8 @@ void text_array_delete(text_arr* a){
 
 void matrix_copy(string_arr* a, string_arr* b, int nbLines){
     for(int y = 0; y < nbLines; y++){
-        for(int x = 0; x < a->arr[y]->arrsize; x++){
-            b->arr[y][x] = a->arr[y][x];
+        for(int x = 0; x < a->arr[y].arrsize; x++){
+            b->arr[y]->arr[x] = a->arr[y]->arr[x];
         }
     }
 }

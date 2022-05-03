@@ -14,8 +14,8 @@ typedef struct text_array
 } text_arr;
 
 
-void array_copy(unsigned char* a, unsigned char* b, int size);
-void arr_print(unsigned char tab[], int size);
+void array_copy(text_arr* a, text_arr* b, int size);
+void arr_print(text_arr* tab, int size);
 
 text_arr* text_array_init();
 void text_array_push(text_arr* a, unsigned char e);
@@ -35,7 +35,7 @@ typedef struct string_array
 void matrix_copy(string_arr* a, string_arr* b, int size);
 void matrix_print(string_arr* tab);
 
-text_arr* string_array_init();
+string_arr* string_array_init();
 void string_array_push(string_arr* a, text_arr e);
 text_arr string_array_pop(string_arr* a);
 text_arr string_array_get(string_arr* a, int index);
