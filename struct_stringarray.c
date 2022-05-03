@@ -1,4 +1,4 @@
-#include "struct_dynarray.h"
+#include "struct_stringarray.h"
 
 
 /*
@@ -83,7 +83,7 @@ void text_array_delete(text_arr* a){
 */
 
 
-void matrix_copy(string_arr a, string_arr b, int nbLines){
+void matrix_copy(string_arr* a, string_arr* b, int nbLines){
     for(int y = 0; y < nbLines; y++){
         for(int x = 0; x < a->arr[y]->arrsize; x++){
             b->arr[y][x] = a->arr[y][x];
@@ -126,7 +126,7 @@ void string_array_push(string_arr* a, text_arr e){
     a->arrsize++;
 }
 
-char* string_array_pop(string_arr* a){
+text_arr string_array_pop(string_arr* a){
     assert(a->arrsize > 0);
     a->arrsize--;
 
@@ -140,7 +140,7 @@ char* string_array_pop(string_arr* a){
     return (a->arr[a->arrsize]);
 }
 
-char* string_array_get(string_arr* a, int index){
+text_arr* string_array_get(string_arr* a, int index){
     assert(index >= 0 && index < a->arrsize);
     return a->arr[index];
 }

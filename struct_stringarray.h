@@ -6,8 +6,6 @@
 #include <assert.h>
 
 
-
-
 typedef struct text_array
 {
     char* arr; 
@@ -27,7 +25,7 @@ void text_array_set(text_arr* a, int index, unsigned char e);
 void text_array_delete(text_arr* a);
 
 
-typedef struct struct string_array
+typedef struct string_array
 {
     text_arr* arr; 
     int arrsize; 
@@ -39,8 +37,8 @@ void matrix_print(string_arr* tab);
 
 text_arr* string_array_init();
 void string_array_push(string_arr* a, text_arr e);
-char string_array_pop(string_arr* a);
-char string_array_get(string_arr* a, int index);
+text_arr string_array_pop(string_arr* a);
+text_arr string_array_get(string_arr* a, int index);
 void string_array_set(string_arr* a, int index, text_arr e);
 void string_array_delete(string_arr* a);
 
